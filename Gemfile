@@ -88,6 +88,15 @@ else
   warn("Please configure your config/database.yml first")
 end
 
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
+  gem 'hirb'
+  gem 'hirb-unicode'
+end
+
 group :development do
   gem "rdoc", ">= 2.4.2"
   gem "yard"
