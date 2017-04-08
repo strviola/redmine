@@ -8,10 +8,10 @@ namespace :db do
       unless system_table? table_name
         puts "## #{table_name.classify}"
         puts ''
-        puts "- #{table_name}"
+        puts "- #{escape_md table_name}"
         begin
           table_name.classify.constantize.columns.each do |column|
-            puts "  - #{column.name}"
+            puts "  - #{escape_md column.name}"
           end
         rescue NameError => e
         end
@@ -25,4 +25,8 @@ def system_table?(table_name)
   %w(
     schema_migrations
   ).include?(table_name)
+end
+
+def escape_md(string)
+  string.gsub(/([_])/) { "\\#{$1}" }
 end
