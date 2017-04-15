@@ -1,21 +1,22 @@
 namespace :db do
   desc 'Generate document abount DB structure in Markdown format'
   task md: :environment do
-    puts '# Tables'
-    puts ''
+    db_md = File.open('DB.md', 'w')
+    db_md.puts '# Tables'
+    db_md.puts ''
     ActiveRecord::Base.connection.tables.each do |table_name|
       # TODO: output DB document
       unless system_table? table_name
-        puts "## #{table_name.classify}"
-        puts ''
-        puts "- #{escape_md table_name}"
+        db_md.puts "## #{table_name.classify}"
+        db_md.puts ''
+        db_md.puts "- #{escape_md table_name}"
         begin
           table_name.classify.constantize.columns.each do |column|
-            puts "  - #{escape_md column.name}"
+            db_md.puts "  - #{escape_md column.name}"
           end
         rescue NameError => e
         end
-        puts ''
+        db_md.puts ''
       end
     end
   end
