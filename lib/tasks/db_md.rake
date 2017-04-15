@@ -12,7 +12,7 @@ namespace :db do
         db_md.puts "- #{escape_md table_name}"
         begin
           table_name.classify.constantize.columns.each do |column|
-            db_md.puts "  - #{escape_md column.name}"
+            db_md.puts list_format(column)
           end
         rescue NameError => e
         end
@@ -30,4 +30,12 @@ end
 
 def escape_md(string)
   string.gsub(/([_])/) { "\\#{$1}" }
+end
+
+def list_format(column)
+  name = column.name
+  type = column.sql_type
+  null = column.null ? '' : ', NOT NULL'
+  line = "  - #{name}, #{type}#{null}"
+  escape_md line
 end

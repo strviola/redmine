@@ -3,512 +3,511 @@
 ## Attachment
 
 - attachments
-  - id
-  - container\_id
-  - container\_type
-  - filename
-  - disk\_filename
-  - filesize
-  - content\_type
-  - digest
-  - downloads
-  - author\_id
-  - created\_on
-  - description
-  - disk\_directory
+  - id, INTEGER, NOT NULL
+  - container\_id, integer
+  - container\_type, varchar(30)
+  - filename, varchar, NOT NULL
+  - disk\_filename, varchar, NOT NULL
+  - filesize, integer(8), NOT NULL
+  - content\_type, varchar
+  - digest, varchar(40), NOT NULL
+  - downloads, integer, NOT NULL
+  - author\_id, integer, NOT NULL
+  - created\_on, datetime
+  - description, varchar
+  - disk\_directory, varchar
 
 ## AuthSource
 
 - auth\_sources
-  - id
-  - type
-  - name
-  - host
-  - port
-  - account
-  - account\_password
-  - base\_dn
-  - attr\_login
-  - attr\_firstname
-  - attr\_lastname
-  - attr\_mail
-  - onthefly\_register
-  - tls
-  - filter
-  - timeout
+  - id, INTEGER, NOT NULL
+  - type, varchar(30), NOT NULL
+  - name, varchar(60), NOT NULL
+  - host, varchar(60)
+  - port, integer
+  - account, varchar
+  - account\_password, varchar
+  - base\_dn, varchar(255)
+  - attr\_login, varchar(30)
+  - attr\_firstname, varchar(30)
+  - attr\_lastname, varchar(30)
+  - attr\_mail, varchar(30)
+  - onthefly\_register, boolean, NOT NULL
+  - tls, boolean, NOT NULL
+  - filter, text
+  - timeout, integer
 
 ## Board
 
 - boards
-  - id
-  - project\_id
-  - name
-  - description
-  - position
-  - topics\_count
-  - messages\_count
-  - last\_message\_id
-  - parent\_id
+  - id, INTEGER, NOT NULL
+  - project\_id, integer, NOT NULL
+  - name, varchar, NOT NULL
+  - description, varchar
+  - position, integer
+  - topics\_count, integer, NOT NULL
+  - messages\_count, integer, NOT NULL
+  - last\_message\_id, integer
+  - parent\_id, integer
 
 ## Change
 
 - changes
-  - id
-  - changeset\_id
-  - action
-  - path
-  - from\_path
-  - from\_revision
-  - revision
-  - branch
+  - id, INTEGER, NOT NULL
+  - changeset\_id, integer, NOT NULL
+  - action, varchar(1), NOT NULL
+  - path, text, NOT NULL
+  - from\_path, text
+  - from\_revision, varchar
+  - revision, varchar
+  - branch, varchar
 
 ## Changeset
 
 - changesets
-  - id
-  - repository\_id
-  - revision
-  - committer
-  - committed\_on
-  - comments
-  - commit\_date
-  - scmid
-  - user\_id
+  - id, INTEGER, NOT NULL
+  - repository\_id, integer, NOT NULL
+  - revision, varchar, NOT NULL
+  - committer, varchar
+  - committed\_on, datetime, NOT NULL
+  - comments, text
+  - commit\_date, date
+  - scmid, varchar
+  - user\_id, integer
 
 ## Comment
 
 - comments
-  - id
-  - commented\_type
-  - commented\_id
-  - author\_id
-  - comments
-  - created\_on
-  - updated\_on
+  - id, INTEGER, NOT NULL
+  - commented\_type, varchar(30), NOT NULL
+  - commented\_id, integer, NOT NULL
+  - author\_id, integer, NOT NULL
+  - comments, text
+  - created\_on, datetime, NOT NULL
+  - updated\_on, datetime, NOT NULL
 
 ## CustomFieldEnumeration
 
 - custom\_field\_enumerations
-  - id
-  - custom\_field\_id
-  - name
-  - active
-  - position
+  - id, INTEGER, NOT NULL
+  - custom\_field\_id, integer, NOT NULL
+  - name, varchar, NOT NULL
+  - active, boolean, NOT NULL
+  - position, integer, NOT NULL
 
 ## CustomField
 
 - custom\_fields
-  - id
-  - type
-  - name
-  - field\_format
-  - possible\_values
-  - regexp
-  - min\_length
-  - max\_length
-  - is\_required
-  - is\_for\_all
-  - is\_filter
-  - position
-  - searchable
-  - default\_value
-  - editable
-  - visible
-  - multiple
-  - format\_store
-  - description
+  - id, INTEGER, NOT NULL
+  - type, varchar(30), NOT NULL
+  - name, varchar(30), NOT NULL
+  - field\_format, varchar(30), NOT NULL
+  - possible\_values, text
+  - regexp, varchar
+  - min\_length, integer
+  - max\_length, integer
+  - is\_required, boolean, NOT NULL
+  - is\_for\_all, boolean, NOT NULL
+  - is\_filter, boolean, NOT NULL
+  - position, integer
+  - searchable, boolean
+  - default\_value, text
+  - editable, boolean
+  - visible, boolean, NOT NULL
+  - multiple, boolean
+  - format\_store, text
+  - description, text
 
 ## CustomValue
 
 - custom\_values
-  - id
-  - customized\_type
-  - customized\_id
-  - custom\_field\_id
-  - value
+  - id, INTEGER, NOT NULL
+  - customized\_type, varchar(30), NOT NULL
+  - customized\_id, integer, NOT NULL
+  - custom\_field\_id, integer, NOT NULL
+  - value, text
 
 ## Document
 
 - documents
-  - id
-  - project\_id
-  - category\_id
-  - title
-  - description
-  - created\_on
+  - id, INTEGER, NOT NULL
+  - project\_id, integer, NOT NULL
+  - category\_id, integer, NOT NULL
+  - title, varchar, NOT NULL
+  - description, text
+  - created\_on, datetime
 
 ## EmailAddress
 
 - email\_addresses
-  - id
-  - user\_id
-  - address
-  - is\_default
-  - notify
-  - created\_on
-  - updated\_on
+  - id, INTEGER, NOT NULL
+  - user\_id, integer, NOT NULL
+  - address, varchar, NOT NULL
+  - is\_default, boolean, NOT NULL
+  - notify, boolean, NOT NULL
+  - created\_on, datetime, NOT NULL
+  - updated\_on, datetime, NOT NULL
 
 ## EnabledModule
 
 - enabled\_modules
-  - id
-  - project\_id
-  - name
+  - id, INTEGER, NOT NULL
+  - project\_id, integer
+  - name, varchar, NOT NULL
 
 ## Enumeration
 
 - enumerations
-  - id
-  - name
-  - position
-  - is\_default
-  - type
-  - active
-  - project\_id
-  - parent\_id
-  - position\_name
+  - id, INTEGER, NOT NULL
+  - name, varchar(30), NOT NULL
+  - position, integer
+  - is\_default, boolean, NOT NULL
+  - type, varchar
+  - active, boolean, NOT NULL
+  - project\_id, integer
+  - parent\_id, integer
+  - position\_name, varchar(30)
 
 ## ImportItem
 
 - import\_items
-  - id
-  - import\_id
-  - position
-  - obj\_id
-  - message
+  - id, INTEGER, NOT NULL
+  - import\_id, integer, NOT NULL
+  - position, integer, NOT NULL
+  - obj\_id, integer
+  - message, text
 
 ## Import
 
 - imports
-  - id
-  - type
-  - user\_id
-  - filename
-  - settings
-  - total\_items
-  - finished
-  - created\_at
-  - updated\_at
+  - id, INTEGER, NOT NULL
+  - type, varchar
+  - user\_id, integer, NOT NULL
+  - filename, varchar
+  - settings, text
+  - total\_items, integer
+  - finished, boolean, NOT NULL
+  - created\_at, datetime, NOT NULL
+  - updated\_at, datetime, NOT NULL
 
 ## IssueCategory
 
 - issue\_categories
-  - id
-  - project\_id
-  - name
-  - assigned\_to\_id
+  - id, INTEGER, NOT NULL
+  - project\_id, integer, NOT NULL
+  - name, varchar(60), NOT NULL
+  - assigned\_to\_id, integer
 
 ## IssueRelation
 
 - issue\_relations
-  - id
-  - issue\_from\_id
-  - issue\_to\_id
-  - relation\_type
-  - delay
+  - id, INTEGER, NOT NULL
+  - issue\_from\_id, integer, NOT NULL
+  - issue\_to\_id, integer, NOT NULL
+  - relation\_type, varchar, NOT NULL
+  - delay, integer
 
 ## IssueStatus
 
 - issue\_statuses
-  - id
-  - name
-  - is\_closed
-  - position
-  - default\_done\_ratio
+  - id, INTEGER, NOT NULL
+  - name, varchar(30), NOT NULL
+  - is\_closed, boolean, NOT NULL
+  - position, integer
+  - default\_done\_ratio, integer
 
 ## Issue
 
 - issues
-  - id
-  - tracker\_id
-  - project\_id
-  - subject
-  - description
-  - due\_date
-  - category\_id
-  - status\_id
-  - assigned\_to\_id
-  - priority\_id
-  - fixed\_version\_id
-  - author\_id
-  - lock\_version
-  - created\_on
-  - updated\_on
-  - start\_date
-  - done\_ratio
-  - estimated\_hours
-  - parent\_id
-  - root\_id
-  - lft
-  - rgt
-  - is\_private
-  - closed\_on
+  - id, INTEGER, NOT NULL
+  - tracker\_id, integer, NOT NULL
+  - project\_id, integer, NOT NULL
+  - subject, varchar, NOT NULL
+  - description, text
+  - due\_date, date
+  - category\_id, integer
+  - status\_id, integer, NOT NULL
+  - assigned\_to\_id, integer
+  - priority\_id, integer, NOT NULL
+  - fixed\_version\_id, integer
+  - author\_id, integer, NOT NULL
+  - lock\_version, integer, NOT NULL
+  - created\_on, datetime
+  - updated\_on, datetime
+  - start\_date, date
+  - done\_ratio, integer, NOT NULL
+  - estimated\_hours, float
+  - parent\_id, integer
+  - root\_id, integer
+  - lft, integer
+  - rgt, integer
+  - is\_private, boolean, NOT NULL
+  - closed\_on, datetime
 
 ## JournalDetail
 
 - journal\_details
-  - id
-  - journal\_id
-  - property
-  - prop\_key
-  - old\_value
-  - value
+  - id, INTEGER, NOT NULL
+  - journal\_id, integer, NOT NULL
+  - property, varchar(30), NOT NULL
+  - prop\_key, varchar(30), NOT NULL
+  - old\_value, text
+  - value, text
 
 ## Journal
 
 - journals
-  - id
-  - journalized\_id
-  - journalized\_type
-  - user\_id
-  - notes
-  - created\_on
-  - private\_notes
+  - id, INTEGER, NOT NULL
+  - journalized\_id, integer, NOT NULL
+  - journalized\_type, varchar(30), NOT NULL
+  - user\_id, integer, NOT NULL
+  - notes, text
+  - created\_on, datetime, NOT NULL
+  - private\_notes, boolean, NOT NULL
 
 ## MemberRole
 
 - member\_roles
-  - id
-  - member\_id
-  - role\_id
-  - inherited\_from
+  - id, INTEGER, NOT NULL
+  - member\_id, integer, NOT NULL
+  - role\_id, integer, NOT NULL
+  - inherited\_from, integer
 
 ## Member
 
 - members
-  - id
-  - user\_id
-  - project\_id
-  - created\_on
-  - mail\_notification
+  - id, INTEGER, NOT NULL
+  - user\_id, integer, NOT NULL
+  - project\_id, integer, NOT NULL
+  - created\_on, datetime
+  - mail\_notification, boolean, NOT NULL
 
 ## Message
 
 - messages
-  - id
-  - board\_id
-  - parent\_id
-  - subject
-  - content
-  - author\_id
-  - replies\_count
-  - last\_reply\_id
-  - created\_on
-  - updated\_on
-  - locked
-  - sticky
+  - id, INTEGER, NOT NULL
+  - board\_id, integer, NOT NULL
+  - parent\_id, integer
+  - subject, varchar, NOT NULL
+  - content, text
+  - author\_id, integer
+  - replies\_count, integer, NOT NULL
+  - last\_reply\_id, integer
+  - created\_on, datetime, NOT NULL
+  - updated\_on, datetime, NOT NULL
+  - locked, boolean
+  - sticky, integer
 
 ## News
 
 - news
-  - id
-  - project\_id
-  - title
-  - summary
-  - description
-  - author\_id
-  - created\_on
-  - comments\_count
+  - id, INTEGER, NOT NULL
+  - project\_id, integer
+  - title, varchar(60), NOT NULL
+  - summary, varchar(255)
+  - description, text
+  - author\_id, integer, NOT NULL
+  - created\_on, datetime
+  - comments\_count, integer, NOT NULL
 
 ## Project
 
 - projects
-  - id
-  - name
-  - description
-  - homepage
-  - is\_public
-  - parent\_id
-  - created\_on
-  - updated\_on
-  - identifier
-  - status
-  - lft
-  - rgt
-  - inherit\_members
-  - default\_version\_id
+  - id, INTEGER, NOT NULL
+  - name, varchar, NOT NULL
+  - description, text
+  - homepage, varchar
+  - is\_public, boolean, NOT NULL
+  - parent\_id, integer
+  - created\_on, datetime
+  - updated\_on, datetime
+  - identifier, varchar
+  - status, integer, NOT NULL
+  - lft, integer
+  - rgt, integer
+  - inherit\_members, boolean, NOT NULL
+  - default\_version\_id, integer
 
 ## Query
 
 - queries
-  - id
-  - project\_id
-  - name
-  - filters
-  - user\_id
-  - column\_names
-  - sort\_criteria
-  - group\_by
-  - type
-  - visibility
-  - options
+  - id, INTEGER, NOT NULL
+  - project\_id, integer
+  - name, varchar, NOT NULL
+  - filters, text
+  - user\_id, integer, NOT NULL
+  - column\_names, text
+  - sort\_criteria, text
+  - group\_by, varchar
+  - type, varchar
+  - visibility, integer
+  - options, text
 
 ## Repository
 
 - repositories
-  - id
-  - project\_id
-  - url
-  - login
-  - password
-  - root\_url
-  - type
-  - path\_encoding
-  - log\_encoding
-  - extra\_info
-  - identifier
-  - is\_default
-  - created\_on
+  - id, INTEGER, NOT NULL
+  - project\_id, integer, NOT NULL
+  - url, varchar, NOT NULL
+  - login, varchar(60)
+  - password, varchar
+  - root\_url, varchar(255)
+  - type, varchar
+  - path\_encoding, varchar(64)
+  - log\_encoding, varchar(64)
+  - extra\_info, text
+  - identifier, varchar
+  - is\_default, boolean
+  - created\_on, datetime
 
 ## Role
 
 - roles
-  - id
-  - name
-  - position
-  - assignable
-  - builtin
-  - permissions
-  - issues\_visibility
-  - users\_visibility
-  - time\_entries\_visibility
-  - all\_roles\_managed
+  - id, INTEGER, NOT NULL
+  - name, varchar(30), NOT NULL
+  - position, integer
+  - assignable, boolean
+  - builtin, integer, NOT NULL
+  - permissions, text
+  - issues\_visibility, varchar(30), NOT NULL
+  - users\_visibility, varchar(30), NOT NULL
+  - time\_entries\_visibility, varchar(30), NOT NULL
+  - all\_roles\_managed, boolean, NOT NULL
 
 ## Setting
 
 - settings
-  - id
-  - name
-  - value
-  - updated\_on
+  - id, INTEGER, NOT NULL
+  - name, varchar(255), NOT NULL
+  - value, text
+  - updated\_on, datetime
 
 ## TimeEntry
 
 - time\_entries
-  - id
-  - project\_id
-  - user\_id
-  - issue\_id
-  - hours
-  - comments
-  - activity\_id
-  - spent\_on
-  - tyear
-  - tmonth
-  - tweek
-  - created\_on
-  - updated\_on
+  - id, INTEGER, NOT NULL
+  - project\_id, integer, NOT NULL
+  - user\_id, integer, NOT NULL
+  - issue\_id, integer
+  - hours, float, NOT NULL
+  - comments, varchar(1024)
+  - activity\_id, integer, NOT NULL
+  - spent\_on, date, NOT NULL
+  - tyear, integer, NOT NULL
+  - tmonth, integer, NOT NULL
+  - tweek, integer, NOT NULL
+  - created\_on, datetime, NOT NULL
+  - updated\_on, datetime, NOT NULL
 
 ## Token
 
 - tokens
-  - id
-  - user\_id
-  - action
-  - value
-  - created\_on
-  - updated\_on
+  - id, INTEGER, NOT NULL
+  - user\_id, integer, NOT NULL
+  - action, varchar(30), NOT NULL
+  - value, varchar(40), NOT NULL
+  - created\_on, datetime, NOT NULL
+  - updated\_on, datetime
 
 ## Tracker
 
 - trackers
-  - id
-  - name
-  - is\_in\_chlog
-  - position
-  - is\_in\_roadmap
-  - fields\_bits
-  - default\_status\_id
+  - id, INTEGER, NOT NULL
+  - name, varchar(30), NOT NULL
+  - is\_in\_chlog, boolean, NOT NULL
+  - position, integer
+  - is\_in\_roadmap, boolean, NOT NULL
+  - fields\_bits, integer
+  - default\_status\_id, integer
 
 ## UserPreference
 
 - user\_preferences
-  - id
-  - user\_id
-  - others
-  - hide\_mail
-  - time\_zone
+  - id, INTEGER, NOT NULL
+  - user\_id, integer, NOT NULL
+  - others, text
+  - hide\_mail, boolean
+  - time\_zone, varchar
 
 ## User
 
 - users
-  - id
-  - login
-  - hashed\_password
-  - firstname
-  - lastname
-  - admin
-  - status
-  - last\_login\_on
-  - language
-  - auth\_source\_id
-  - created\_on
-  - updated\_on
-  - type
-  - identity\_url
-  - mail\_notification
-  - salt
-  - must\_change\_passwd
-  - passwd\_changed\_on
+  - id, INTEGER, NOT NULL
+  - login, varchar, NOT NULL
+  - hashed\_password, varchar(40), NOT NULL
+  - firstname, varchar(30), NOT NULL
+  - lastname, varchar(255), NOT NULL
+  - admin, boolean, NOT NULL
+  - status, integer, NOT NULL
+  - last\_login\_on, datetime
+  - language, varchar(5)
+  - auth\_source\_id, integer
+  - created\_on, datetime
+  - updated\_on, datetime
+  - type, varchar
+  - identity\_url, varchar
+  - mail\_notification, varchar, NOT NULL
+  - salt, varchar(64)
+  - must\_change\_passwd, boolean, NOT NULL
+  - passwd\_changed\_on, datetime
 
 ## Version
 
 - versions
-  - id
-  - project\_id
-  - name
-  - description
-  - effective\_date
-  - created\_on
-  - updated\_on
-  - wiki\_page\_title
-  - status
-  - sharing
+  - id, INTEGER, NOT NULL
+  - project\_id, integer, NOT NULL
+  - name, varchar, NOT NULL
+  - description, varchar
+  - effective\_date, date
+  - created\_on, datetime
+  - updated\_on, datetime
+  - wiki\_page\_title, varchar
+  - status, varchar
+  - sharing, varchar, NOT NULL
 
 ## Watcher
 
 - watchers
-  - id
-  - watchable\_type
-  - watchable\_id
-  - user\_id
+  - id, INTEGER, NOT NULL
+  - watchable\_type, varchar, NOT NULL
+  - watchable\_id, integer, NOT NULL
+  - user\_id, integer
 
 ## WikiContent
 
 - wiki\_contents
-  - id
-  - page\_id
-  - author\_id
-  - text
-  - comments
-  - updated\_on
-  - version
+  - id, INTEGER, NOT NULL
+  - page\_id, integer, NOT NULL
+  - author\_id, integer
+  - text, text
+  - comments, varchar(1024)
+  - updated\_on, datetime, NOT NULL
+  - version, integer, NOT NULL
 
 ## WikiPage
 
 - wiki\_pages
-  - id
-  - wiki\_id
-  - title
-  - created\_on
-  - protected
-  - parent\_id
+  - id, INTEGER, NOT NULL
+  - wiki\_id, integer, NOT NULL
+  - title, varchar(255), NOT NULL
+  - created\_on, datetime, NOT NULL
+  - protected, boolean, NOT NULL
+  - parent\_id, integer
 
 ## WikiRedirect
 
 - wiki\_redirects
-  - id
-  - wiki\_id
-  - title
-  - redirects\_to
-  - created\_on
-  - redirects\_to\_wiki\_id
+  - id, INTEGER, NOT NULL
+  - wiki\_id, integer, NOT NULL
+  - title, varchar
+  - redirects\_to, varchar
+  - created\_on, datetime, NOT NULL
+  - redirects\_to\_wiki\_id, integer, NOT NULL
 
 ## Wiki
 
 - wikis
-  - id
-  - project\_id
-  - start\_page
-  - status
-
+  - id, INTEGER, NOT NULL
+  - project\_id, integer, NOT NULL
+  - start\_page, varchar(255), NOT NULL
+  - status, integer, NOT NULL
